@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   async checkWeather(city: string) {
     const res = await fetch(this.apiUrl + city + `&appid=${this.apiKey}`);
     let data = await res.json();
-    this.isNothingFound = data.cod === '404' ? true : false;
+    this.isNothingFound = data?.cod === '404' ? true : false;
     if (this.isNothingFound) return;
 
     this.city = data?.name;
